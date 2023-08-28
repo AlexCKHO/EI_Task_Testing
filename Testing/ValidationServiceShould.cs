@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using EI_Task.Services;
+﻿using EI_Task.Services;
 using System.Windows.Forms;
 using Moq;
 
@@ -92,41 +91,6 @@ namespace Testing
         }
 
 
-        [Test]
-        [Ignore("Incompleted")]
-        public void MainFormAreAllInputsValid_AllValidInputs_ReturnsTrue()
-        {
-
-            SetupControlAndErrorProvider();
-
-            _mockErrorProvider.Setup(ep => ep.GetError(It.IsAny<Control>())).Returns(string.Empty);
-
-
-            var result = _validationService.MainFormAreAllInputsValid(_mockControls.Object, _mockErrorProvider.Object);
-
-            Assert.IsTrue(result);
-            /* var mockErrorProvider = new Mock<ErrorProvider>();
-             mockErrorProvider.Setup(m => m.GetError(It.IsAny<Control>())).Returns(string.Empty);
-
-             var mockControls = new Mock<Control.ControlCollection>(new Control());
-             mockControls.Setup(m => m.GetEnumerator()).Returns(new Control[] {
-                 new TextBox { Text = "SomeText" },
-                 new ComboBox { Text = "SomeText" }
-             }.GetEnumerator());
-
-
-             var validationService = new ValidationService();
-             var result = validationService.MainFormAreAllInputsValid(mockControls.Object, mockErrorProvider.Object);
-
-
-             Assert.IsTrue(result);*/
-        }
-
-
-        private void SetupControlAndErrorProvider()
-        {
-            _mockControls = new Mock<Control.ControlCollection>(new Control());
-            _mockErrorProvider = new Mock<ErrorProvider>();
-        }
+        
     }
 }
