@@ -12,7 +12,7 @@ namespace Testing
     public class LibraryRepositoryTests
     {
         private LibraryDbContext _context;
-        private LibraryRepository<Book> _sut; // System Under Test
+        private LibraryRepository<Book> _sut; 
 
 
         [SetUp]
@@ -40,7 +40,7 @@ namespace Testing
             var result = _sut.FindAsync(1).Result;
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(testBook.Name, result.Name);
+            Assert.That(result.Name, Is.EqualTo(testBook.Name));
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace Testing
 
             var result = _sut.GetAllAsync().Result.ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.That(result.Count, Is.EqualTo(2));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace Testing
             var result = _sut.FindAsync(1).Result;
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(testBook.Name, result.Name);
+            Assert.That(result.Name, Is.EqualTo(testBook.Name));
         }
 
         [Test]
@@ -87,7 +87,7 @@ namespace Testing
 
             var result = _sut.GetAllAsync().Result.ToList();
 
-            Assert.AreEqual(2, result.Count);
+            Assert.That(result.Count, Is.EqualTo(2));
         }
 
         [Test]
@@ -119,7 +119,7 @@ namespace Testing
             var result = _sut.FindAsync(1).Result;
 
             Assert.IsNotNull(result);
-            Assert.AreEqual("Updated Book", result.Name);
+            Assert.That(result.Name, Is.EqualTo("Updated Book"));
         }
     }
 }
